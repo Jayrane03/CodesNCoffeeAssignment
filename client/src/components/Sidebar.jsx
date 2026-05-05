@@ -13,13 +13,13 @@ export default function Sidebar() {
   const location = useLocation();
   const [open, setOpen] = useState(false);
 
-  // ✅ Prevent background scroll when sidebar open
+
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = open ? "hidden" : "auto";
+
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup
+    };
   }, [open]);
 
   const linkClass = (path) =>
@@ -31,7 +31,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* 🔥 Mobile Top Bar */}
+      
       <div className="md:hidden flex items-center justify-between p-4 bg-gray-900 text-white fixed top-0 left-0 right-0 z-50 shadow">
         <h1 className="text-lg font-bold">AI Support</h1>
         <button onClick={() => setOpen(true)}>
@@ -47,10 +47,9 @@ export default function Sidebar() {
         />
       )}
 
-      {/* 🔥 Sidebar */}
       <div
         className={`
-          fixed top-0 left-0 h-screen w-64 bg-gray-900 text-white p-5 flex flex-col justify-between z-50
+          fixed top-0 left-0 h-100 w-64 bg-gray-900 text-white p-5 flex flex-col justify-between z-50
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:static
