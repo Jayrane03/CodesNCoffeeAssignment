@@ -62,7 +62,7 @@ Create `.env` file inside backend:
 
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb://jayurane32003_db_user:jaycode@ac-o0pjc1v-shard-00-00.j0rmjmj.mongodb.net:27017,ac-o0pjc1v-shard-00-01.j0rmjmj.mongodb.net:27017,ac-o0pjc1v-shard-00-02.j0rmjmj.mongodb.net:27017/ticket?ssl=true&replicaSet=atlas-u972tg-shard-0&authSource=admin&appName=Cluster0
 ```
 
 ---
